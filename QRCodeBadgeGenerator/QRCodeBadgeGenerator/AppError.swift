@@ -23,7 +23,7 @@ enum AppError: LocalizedError, CustomStringConvertible {
                 return "Invalid input"
             }
         case .failedToGenerateImage:
-            return "Faile to generate image"
+            return "Failed to generate image"
         case .custom(let message):
             return message
         }
