@@ -20,16 +20,15 @@ struct ContentView: View {
                 Spacer()
 
                 
-                Button("Generate Badge", systemImage: "qrcode") {
-                    withAnimation {
-                        isPresented.toggle()
-                    }
+                NavigationLink {
+                    FormView()
+                } label: {
+                    Label("Generate Badge", systemImage: "qrcode")
                 }
                 .tint(.teal)
                 .font(.title3.bold())
                 .buttonStyle(.borderedProminent)
                 .labelStyle(InvertedLabelStyle())
-                .sheet(isPresented: $isPresented, content: FormView.init)
                 
                 Spacer()
                     .frame(height: 100)
