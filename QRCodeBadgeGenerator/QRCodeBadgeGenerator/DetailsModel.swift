@@ -14,8 +14,16 @@ struct PersonalDetails: Identifiable, Hashable, CustomStringConvertible {
     var twitterHandle: String = ""
     var githubHandle: String = ""
     
+    var twitterLink: String {
+        "Twitter: \(twitterHandle)"
+    }
+    
+    var githubLink: String {
+        "GitHub: \(githubHandle)"
+    }
+    
     var description: String {
-        "\(name)\n\(emailAddress)\n\(twitterHandle)\n\(githubHandle)"
+        "\(name)\n\(emailAddress)\n\(twitterLink)\n\(githubLink)"
     }
 }
 
