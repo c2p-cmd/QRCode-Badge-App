@@ -39,7 +39,6 @@ struct FormView: View {
         } message: { err in
             Text(err.errorDescription ?? err.localizedDescription)
         }
-        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Details")
     }
     
@@ -250,7 +249,8 @@ fileprivate struct QRBadgeView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(details.emailAddress)
-                        .font(.headline)
+                        .font(.subheadline)
+                        .foregroundStyle(.black)
                     if !details.twitterHandle.isEmpty {
                         let label = Text(details.twitterHandle)
                             .font(.subheadline)
@@ -261,6 +261,7 @@ fileprivate struct QRBadgeView: View {
                             }
                         } else {
                             label
+                                .foregroundStyle(.black)
                         }
                     }
                     if !details.githubHandle.isEmpty {
@@ -273,6 +274,7 @@ fileprivate struct QRBadgeView: View {
                             }
                         } else {
                             label
+                                .foregroundStyle(.black)
                         }
                     }
                 }
@@ -287,7 +289,9 @@ fileprivate struct QRBadgeView: View {
             }
         } label: {
             Label("Contact \(details.name)", systemImage: "person.fill")
+                .foregroundStyle(.black)
         }
+        .environment(\.colorScheme, ColorScheme.light)
     }
 }
 
