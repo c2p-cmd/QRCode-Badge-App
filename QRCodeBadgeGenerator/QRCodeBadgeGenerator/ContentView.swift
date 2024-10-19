@@ -12,42 +12,47 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
-                Spacer()
+            VStack {
+                Rectangle()
+                    .fill(Color.BG.gradient)
+                    .ignoresSafeArea(.all)
                 
-                headingView
-                
-                Spacer()
-
-                
-                NavigationLink {
-                    FormView()
-                } label: {
-                    Label("Generate Badge", systemImage: "qrcode")
+                VStack(spacing: 20) {
+                    Image(.appIcon)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .clipShape(.rect(cornerRadius: 20, style: .continuous))
+                    
+                    headingView
+                        .padding()
+                    
+                    NavigationLink(destination: FormView()) {
+                        Label("Generate Badge", systemImage: "qrcode")
+                            .font(.title3.bold())
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.teal)
+                            .cornerRadius(10)
+                    }
                 }
-                .tint(.teal)
-                .font(.title3.bold())
-                .buttonStyle(.borderedProminent)
-                .labelStyle(InvertedLabelStyle())
-                
-                Spacer()
-                    .frame(height: 100)
+                .padding()
             }
-            .padding()
         }
     }
     
     var headingView: some View {
         VStack(alignment: .center, spacing: 10) {
-            Text("Welcome to Badgey\nQRCode Generator!")
-                .font(.title)
-                .fontWeight(.semibold)
-                .fontDesign(.monospaced)
+            Text("Welcome to \"Badgey\" QRCode Generator!")
+                .font(.title2)
+                .fontWeight(.bold)
+                .fontDesign(.rounded)
+                .multilineTextAlignment(.center)
             
-            Text("Simply Fill in the Details and Press Generate to get your Badge")
+            Text("Simply Fill in the Details and Press Generate to get your personalized Badge with a QR Code")
                 .font(.headline)
                 .fontWeight(.medium)
-                .fontDesign(.monospaced)
+                .fontDesign(.rounded)
+                .padding(.horizontal)
         }
     }
 }
